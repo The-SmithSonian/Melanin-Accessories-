@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Melanin Accessories - Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+</head>
+
+<body class="checking">
+
+    <div id="authCheck" class="auth-check">
+        Loading dashboard...
+    </div>
+
+    <!-- Admin Header -->
+
+    <header class="admin-header">
+
+        <h1>Melanin Accessories</h1>
+
+        <div>
+
+            <span>Admin</span>
+
+            <button id="logoutBtn">
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Dashboard -->
+
+    <main class="dashboard">
+
+        <h2>Admin Dashboard</h2>
+
+        <p class="dashboard-intro">
+            Manage your product catalogue from this dashboard.
+        </p>
+
+
+        <!-- Statistics -->
+
+        <div class="stats-container">
+
+            <div class="stat-card">
+
+                <div class="stat-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>
+                </div>
+
+                <h3>Total Products</h3>
+
+                <p id="totalProducts">0</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-card__icon stat-card__icon--purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
+
+                <h3>Available</h3>
+
+                <p id="availableProducts">0</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-card__icon stat-card__icon--muted">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 12h6"/></svg>
+                </div>
+
+                <h3>Sold</h3>
+
+                <p id="soldProducts">0</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-card__icon stat-card__icon--muted">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </div>
+
+                <h3>Drafts</h3>
+
+                <p id="draftProducts">0</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Product Management -->
+
+        <section class="product-management">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="kicker">Catalogue</span>
+
+                    <h2>Products</h2>
+
+                    <p>
+                        Add and manage Melanin Accessories products.
+                    </p>
+
+                </div>
+
+                <button id="addProductBtn">
+                    <span class="plus">+</span> Add Product
+                </button>
+
+            </div>
+
+
+            <!-- Product List (admin.js fills this in) -->
+
+            <div id="productList"></div>
+
+        </section>
+
+
+        <!-- Add / Edit Product Form -->
+
+        <div
+            id="productFormContainer"
+            class="product-form-container"
+        >
+
+            <div class="form-header">
+
+                <div>
+
+                    <h2>Add New Product</h2>
+
+                    <p>
+                        Enter the details of the product below.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="closeFormBtn"
+                    class="close-btn"
+                    aria-label="Close form"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="productForm">
+
+                <!-- Product Name -->
+
+                <div class="form-group">
+
+                    <label for="productName">
+                        Product Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="e.g. Layered Gold-Plated Chain Necklace"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="form-group">
+
+                    <label for="productCategory">
+                        Category
+                    </label>
+
+                    <select id="productCategory" required>
+
+                        <option value="">Select category</option>
+                        <option value="Necklaces">Necklaces</option>
+                        <option value="Bracelets">Bracelets</option>
+                        <option value="Earrings">Earrings</option>
+                        <option value="Rings">Rings</option>
+                        <option value="Anklets">Anklets</option>
+                        <option value="Sets">Sets</option>
+                        <option value="Accessories">Other Accessories</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Price -->
+
+                <div class="form-group">
+
+                    <label for="productPrice">
+                        Price (₦)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productPrice"
+                        placeholder="e.g. 12000"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <label for="productDescription">
+                        Product Description
+                    </label>
+
+                    <textarea
+                        id="productDescription"
+                        rows="6"
+                        placeholder="Describe the piece: materials, sizing, styling notes..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Images -->
+
+                <div class="form-group">
+
+                    <label for="productImages">
+                        Product Images
+                    </label>
+
+                    <input
+                        type="file"
+                        id="productImages"
+                        accept="image/*"
+                        multiple
+                    >
+
+                    <small>
+                        You can select multiple images.
+                    </small>
+
+                    <div id="imagePreview"></div>
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="saveDraftBtn"
+                        class="secondary-btn"
+                    >
+                        Save as Draft
+                    </button>
+
+                    <button
+                        type="button"
+                        id="markSoldBtn"
+                        class="secondary-btn secondary-btn--sold"
+                    >
+                        Mark as Sold
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Publish as Available
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <script>
+        // If the dashboard has not opened after 10 seconds, say so
+        setTimeout(function () {
+
+            if (document.body.classList.contains("checking")) {
+
+                document.querySelector("#authCheck").innerHTML =
+                    "This is taking too long. Check your internet connection, then refresh the page. " +
+                    '<a href="login.html">Back to login</a>';
+
+            }
+
+        }, 10000);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
